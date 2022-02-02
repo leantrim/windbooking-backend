@@ -1,5 +1,7 @@
 const express = require("express");
 const _ = require("lodash");
+const auth = require("../middleware/auth");
+const admin = require("../middleware/admin");
 const router = express.Router();
 const { validate, Windpark } = require("../models/Windpark");
 
@@ -45,7 +47,7 @@ router.put("/:id", async (req, res) => {
   return res.send(windpark);
 });
 
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", [auth, admin], async (req, res) => {
   const windpark = await Windpark.findByIdAndDelete(req.params.id);
   if (!windpark) return res.status("404").send("Not Found");
 
