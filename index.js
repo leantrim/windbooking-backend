@@ -1,6 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const dotenv = require('dotenv');
+const dotenv = require("dotenv");
 const app = express();
 const windparks = require("./routes/windparks");
 const users = require("./routes/users");
@@ -9,7 +9,7 @@ const auth = require("./routes/auth");
 dotenv.config();
 
 if (!process.env.JWT_SECRET) {
-  console.error('ERROR: JWT Secret not set');
+  console.error("ERROR: JWT Secret not set");
   process.exit(1);
 }
 
