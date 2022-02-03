@@ -21,7 +21,7 @@ router.post("/", async (req, res) => {
   if (error) return res.status("400").send(error.message);
 
   const windpark = new Windpark(
-    _.pick(req.body, ["adress", "troubleshootingManual", "contactInformation"])
+    _.pick(req.body, ["address", "troubleshootingManual", "contactInformation"])
   );
 
   await windpark.save();
@@ -36,9 +36,9 @@ router.put("/:id", async (req, res) => {
   const windpark = await Windpark.findById(req.params.id);
   if (!windpark) return res.status("404").send("Not Found");
 
-  const { adress, troubleshootingManual, contactInformation } = req.body;
+  const { address, troubleshootingManual, contactInformation } = req.body;
 
-  windpark.adress = adress;
+  windpark.address = address;
   windpark.troubleshootingManual = troubleshootingManual;
   windpark.contactInformation = contactInformation;
 
