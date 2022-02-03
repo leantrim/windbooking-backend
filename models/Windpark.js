@@ -11,8 +11,8 @@ const Windpark = mongoose.model(
     troubleshootingManual: { type: String, required: true },
     contactInformation: {
       name: { type: String, minlength: 2, maxlength: 50, required: true },
-      email: { type: String, minlength: 2, maxlength: 50, required: true },
-      mobile: { type: String, minlength: 2, maxlength: 50, required: true },
+      email: { type: String, minlength: 2, maxlength: 150, required: true },
+      mobile: { type: String, minlength: 5, maxlength: 50, required: true },
     },
   })
 );
@@ -26,8 +26,8 @@ function validateWindpark(windpark) {
     troubleshootingManual: Joi.string().required(),
     contactInformation: Joi.object({
       name: Joi.string().required().min(2).max(50),
-      email: Joi.string().required().min(2).max(50),
-      mobile: Joi.string().required().min(2).max(50),
+      email: Joi.string().required().min(2).max(150).email(),
+      mobile: Joi.string().required().min(5).max(50),
     }),
   });
 
