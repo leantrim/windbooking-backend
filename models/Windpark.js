@@ -4,7 +4,7 @@ const Joi = require("joi");
 const Windpark = mongoose.model(
   "Windpark",
   new mongoose.Schema({
-    address: {
+    adress: {
       street: { type: String, minlength: 2, maxlength: 50, required: true },
       zipcode: { type: String, minlength: 5, maxlength: 5, required: true },
     },
@@ -19,7 +19,7 @@ const Windpark = mongoose.model(
 
 function validateWindpark(windpark) {
   const schema = Joi.object({
-    address: Joi.object({
+    adress: Joi.object({
       street: Joi.string().required().min(2).max(50),
       zipcode: Joi.string().required().min(5).max(5),
     }),

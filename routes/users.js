@@ -17,14 +17,14 @@ router.post('/', async (req, res) => {
     let user = await User.findOne({ email: req.body.email });
     if (user) return res.status(400).send('User already registerd');
 
-    user = new User(_.pick(req.body, ['name', 'email', 'password']));
+    user = new User(_.pick(req.body, ['name', 'email', 'password', 'userType']));
 
     const salt = await bcrypt.genSalt();
     user.password = await bcrypt.hash(user.password, salt);
 
     await user.save();
 
-    return res.send(_.pick(user, ['_id', 'name', 'email']));
+    return res.send(_.pick(user, ['_id', 'email', 'name', 'userType']));
 })
 
 module.exports = router;
