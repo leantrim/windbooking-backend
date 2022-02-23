@@ -1,5 +1,5 @@
 "use strict";
-const Windpark = mongoose.model("Windpark", new mongoose.Schema({
+const Windfarm = mongoose.model("Windfarm", new mongoose.Schema({
     adress: {
         street: { type: String, minlength: 2, maxlength: 50, required: true },
         zipcode: { type: Number, min: 5, max: 5, required: true },
@@ -11,4 +11,4 @@ const Windpark = mongoose.model("Windpark", new mongoose.Schema({
         mobile: { type: String, minlength: 2, maxlength: 50, required: true },
     },
 }));
-exports.Windpark = Windpark;
+exports.Windfarm = Windfarm;

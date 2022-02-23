@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 const Joi = require("joi");
 
-const Windpark = mongoose.model(
-  "Windpark",
+const Windfarm = mongoose.model(
+  "Windfarm",
   new mongoose.Schema({
     adress: {
       street: { type: String, minlength: 2, maxlength: 50, required: true },
@@ -17,7 +17,7 @@ const Windpark = mongoose.model(
   })
 );
 
-function validateWindpark(windpark) {
+function validateWindfarm(windfarm) {
   const schema = Joi.object({
     adress: Joi.object({
       street: Joi.string().required().min(2).max(50),
@@ -31,8 +31,8 @@ function validateWindpark(windpark) {
     }),
   });
 
-  return schema.validate(windpark);
+  return schema.validate(windfarm);
 }
 
-exports.Windpark = Windpark;
-exports.validate = validateWindpark;
+exports.Windfarm = Windfarm;
+exports.validate = validateWindfarm;

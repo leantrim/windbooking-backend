@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const app = express();
-const windparks = require("./routes/windparks");
+const windfarms = require("./routes/windfarms");
 const users = require("./routes/users");
 const auth = require("./routes/auth");
 const cors = require("cors");
@@ -16,7 +16,7 @@ if (!process.env.JWT_SECRET) {
 
 app.use(express.json());
 app.use(cors());
-app.use("/api/windparks", windparks);
+app.use("/api/windfarms", windfarms);
 app.use("/api/users", users);
 app.use("/api/auth", auth);
 
