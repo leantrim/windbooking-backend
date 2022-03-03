@@ -2,9 +2,9 @@
 let express = require("express");
 const mongoose = require("mongoose");
 const app = express();
-const windparks = require("./routes/windparks");
+const windfarms = require("./routes/windfarms");
 app.use(express.json());
-app.use("/api/windparks", windparks);
+app.use("/api/windfarms", windfarms);
 app.listen(5000, () => {
     console.log("listening on port 5000...");
 });

@@ -3,19 +3,19 @@ const auth = require('../middleware/auth');
 const { Technician, validate } = require('../models/Technicians');
 const router = express.Router();
 
-router.get('/:id', async(req, res) => {
+router.get('/:id', async (req, res) => {
     console.log(req.params.id);
     if (!req.params.id) return res.status(400).send('userID is required');
     const technician = await Technician.findOne({ userID: req.params.id });
     return res.send(technician);
 })
 
-router.get("/", async(req, res) => {
+router.get("/", async (req, res) => {
     const technicians = await Technician.find();
     return res.send(technicians);
 });
 
-router.post('/', async(req, res) => {
+router.post('/', async (req, res) => {
     const { error } = validate(req.body);
     if (error) return res.status(400).send(error.message);
 
@@ -30,7 +30,7 @@ router.post('/', async(req, res) => {
     return res.send(technician);
 })
 
-router.put('/:id', async(req, res) => {
+router.put('/:id', async (req, res) => {
     const { error } = validate(req.body);
     if (error) return res.status(400).send(error.message);
 
@@ -46,7 +46,7 @@ router.put('/:id', async(req, res) => {
         transportVehicle: {
             winterTyres: req.body.winterTyres,
         }
-    }, );
+    });
 
 
     return res.send(tech);
