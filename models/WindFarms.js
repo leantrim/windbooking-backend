@@ -28,9 +28,12 @@ const Windfarm = mongoose.model(
 
 function validateWindfarm(windfarm) {
   const schema = Joi.object({
-    adress: Joi.object({
+    address: Joi.object({
       street: Joi.string().required().min(2).max(50),
       zipcode: Joi.string().required().min(5).max(5),
+      city: Joi.string().required().min(2).max(100),
+      county: Joi.string().required().min(2).max(100),
+      country: Joi.string().required().min(2).max(50),
     }),
     troubleshootingManual: Joi.string().required(),
     owner: Joi.object({

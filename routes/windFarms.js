@@ -21,7 +21,12 @@ router.post("/", async (req, res) => {
   if (error) return res.status("400").send(error.message);
 
   const windfarm = new Windfarm(
-    _.pick(req.body, ["adress", "troubleshootingManual", "contactInformation"])
+    _.pick(req.body, [
+      "address",
+      "troubleshootingManual",
+      "owner",
+      "windFarmDetails",
+    ])
   );
 
   await windfarm.save();
@@ -36,11 +41,12 @@ router.put("/:id", async (req, res) => {
   const windfarm = await Windfarm.findById(req.params.id);
   if (!windfarm) return res.status("404").send("Not Found");
 
-  const { adress, troubleshootingManual, contactInformation } = req.body;
+  const { address, troubleshootingManual, owner, windFarmDetails } = req.body;
 
-  windfarm.adress = adress;
+  windfarm.address = address;
   windfarm.troubleshootingManual = troubleshootingManual;
-  windfarm.contactInformation = contactInformation;
+  windfarm.owner = owner;
+  windfarm.windFarmDetails = windFarmDetails;
 
   await windfarm.save();
 
